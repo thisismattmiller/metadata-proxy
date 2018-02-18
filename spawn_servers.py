@@ -18,13 +18,13 @@ print("Whic slug, Slugs avilable:",region_slugs)
 print('\n\n')
 
 # use_region = input("prompt")
-use_region = 'sfo2'
+use_region = 'fra1'
 print(use_region)
 
 
 
 counter = 0
-for y in range(0,3):
+for y in range(0,1):
 
   servernames = []
 
@@ -50,7 +50,8 @@ for y in range(0,3):
   }
 
   create = requests.post("https://api.digitalocean.com/v2/droplets",json=data,headers=headers).json()
-  # print(create)
+  time.sleep(10)
+  print(create)
 # droplet_id = create['droplets'][0]['id']
 
 

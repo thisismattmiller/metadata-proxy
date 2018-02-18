@@ -71,26 +71,28 @@ if __name__ == "__main__":
 	print(len(compelted_isbns),'already compelted')
 
 
-
-
-
-
 	isbns = []
-	ips_use=[]
+
+	# remove the completed ones
 	with open('google_for_real') as google_for_real:
 		for line in google_for_real:
-
-			if len(ips_use) == 0:
-				ips_use = ips[:]
-
-			ip = ips_use.pop()
-			
 			if line.strip() not in compelted_isbns:
-				data = {'isbn': line.strip(), 'ip':ip}
 				isbns.append(data)
 
+	ips_use=[]
+	isbns_work = []
+	for line in isbns:
 
-	print(len(isbns),' ready to work')
+		if len(ips_use) == 0:
+			ips_use = ips[:]
+
+		ip = ips_use.pop()
+		
+		data = {'isbn': line.strip(), 'ip':ip}
+		isbns_work.append(data)
+
+
+	print(len(isbns_work),' ready to work')
 
 	work_counter = 0
 	results = []
@@ -98,7 +100,7 @@ if __name__ == "__main__":
 	lock = multiprocessing.Lock()
 
 
-	for result in tqdm.tqdm(multiprocessing.Pool(10).imap_unordered(lookup, isbns), total=len(isbns)):	
+	for result in tqdm.tqdm(multiprocessing.Pool(10).imap_unordered(lookup, isbns_work), total=len(isbns_work)):	
 
 
 		# print(str(work_counter) + '/' + str(len(isbns)))
