@@ -41,6 +41,27 @@ app.get('/worldcat/:isbn', (req, res) => {
 
 	});
 })
+app.get('/worldcatld/:oclc', (req, res) => {
+	res.setHeader('Content-Type', 'application/json');
+
+	var options = {
+		url: `http://experiment.worldcat.org/oclc/${req.params.oclc}.jsonld`,
+		headers: {
+			'User-Agent': `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36.${Math.floor(Math.random() * 500000)} (KHTML, like Gecko) Chrome`,
+			'Connection':'close'
+		}
+	}
+	request(options, function (error, response, body) {
+	  if (error){
+	  	res.send(JSON.stringify(null));
+	  	return
+	  }
+
+	  res.send(JSON.stringify({id: req.params.oclc, results: body }));
+	  return
+
+	});
+})
 app.get('/xisbn/:isbn', (req, res) => {
 	res.setHeader('Content-Type', 'application/json');
 

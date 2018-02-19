@@ -17,14 +17,13 @@ for r in regions['regions']:
 print("Whic slug, Slugs avilable:",region_slugs)
 print('\n\n')
 
-# use_region = input("prompt")
-use_region = 'fra1'
+use_region = input("prompt")
 print(use_region)
 
 
 
 counter = 0
-for y in range(0,1):
+for y in range(0,3):
 
   servernames = []
 
@@ -38,7 +37,7 @@ for y in range(0,1):
     "names": servernames,
     "region": use_region,
     "size": "s-1vcpu-1gb",
-    "image": 31817554,
+    "image": 31910905,
     "ssh_keys": [813340],
     "backups": False,
     "ipv6": False,
