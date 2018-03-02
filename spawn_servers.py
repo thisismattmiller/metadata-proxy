@@ -23,7 +23,7 @@ print(use_region)
 
 
 counter = 0
-for y in range(0,3):
+for y in range(0,1):
 
   servernames = []
 
@@ -37,7 +37,7 @@ for y in range(0,3):
     "names": servernames,
     "region": use_region,
     "size": "s-1vcpu-1gb",
-    "image": 31910905,
+    "image": 31936125,
     "ssh_keys": [813340],
     "backups": False,
     "ipv6": False,
